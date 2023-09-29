@@ -1,0 +1,45 @@
+{
+    "RegionesKey": "",
+    "ListRegiones": [
+        {
+            "ReginoId": "00001",
+            "Name": "Aragua"
+        },
+        {
+            "ReginoId": "00002",
+            "Name": "Apure"
+        },
+        {
+            "ReginoId": "00003",
+            "Name": "Carabobo"
+        },
+        {
+            "ReginoId": "00004",
+            "Name": "Anzoategui"
+        },
+        {
+            "ReginoId": "00005",
+            "Name": "Lara"
+        },
+        {
+            "ReginoId": "00006",
+            "Name": "Miranda"
+        },
+        {
+            "ReginoId": "00007",
+            "Name": "Monagas"
+        },
+        {
+            "ReginoId": "00008",
+            "Name": "Sucre"
+        },
+        {
+            "ReginoId": "00009",
+            "Name": "Trujillo"
+        },
+        {
+            "ReginoId": "00010",
+            "Name": "Yaracuy"
+        }
+    ]
+}

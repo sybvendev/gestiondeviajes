@@ -1,0 +1,13 @@
+{
+    "MonedasKey": "",
+    "ListMonedas": [
+        {
+            "MonedasId": "VEF",
+            "Name": "Bolivar Digitel"
+        },
+        {
+            "MonedasId": "USD",
+            "Name": "Dolar Digitel"
+        }
+    ]
+}

@@ -1,0 +1,558 @@
+<mvc:View xmlns:calendar="sap.ui.unified.calendar" controllerName="sybvensapui5.gestiondeviajes1.controller.createrg"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout">
+
+    <NavContainer id="wizardNavContainer">
+
+        <pages>
+
+            <Page title="{i18n>createRG}" id="wizardContentPage" showHeader="true" titleLevel="H6" titleAlignment="Center">
+
+                <content>
+
+
+                    <Wizard id="CreateTRWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+
+                        <WizardStep id="TrGeneralDataStep" title="{i18n>RgMakeRGStep}" validated="true" activate="dataInfoValidation">
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>StartTrip}" required="true" labelFor="StartTrip" class="sapUiSmallMargin" />
+
+                                <DatePicker id="StartTrip" change="handleChange" class="sapUiSmallMarginBottom" value="{
+						      'path': 'ojsonHeaderTripKey>/Fecha_Ini',
+						     'type': 'sap.ui.model.type.Date',
+						     'formatOptions': {
+							   'pattern': 'dd/MM/y'
+						       }
+					            }" editable="false"/>
+
+
+                                <Label text="{i18n>HourtTrip}" required="true" labelFor="HourtTrip" class="sapUiSmallMargin"/>
+
+                                <TimePicker editable="false" id="HourtTrip" value="{ojsonHeaderTripKey>/Hora_Ini}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" />
+
+
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>EndtTrip}" required="true" labelFor="EndtTrip" class="sapUiSmallMargin" />
+
+                                <DatePicker id="EndtTrip" change="handleChange" class="sapUiSmallMarginBottom" value="{
+						  'path': 'ojsonHeaderTripKey>/Fecha_Fin',
+						  'type': 'sap.ui.model.type.Date',
+						  'formatOptions': {
+							'pattern': 'dd/MM/y'
+						  }
+					        }" editable="false"/>
+
+                                <Label text="{i18n>HoureTrip}" required="true" labelFor="HoureTrip" class="sapUiSmallMargin"/>
+
+
+                                <TimePicker id="HoureTrip" value="{ojsonHeaderTripKey>/Hora_Fin}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" editable="false" />
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>TripType}" required="true" labelFor="SlTripType" class="sapUiSmallMargin" />
+
+                                <Select id="SlTripType" selectedKey="{ojsonHeaderTripKey>/TypeId}" forceSelection="false" items="{jsonTripType>/ListTripType}" visible="true" editable="false">
+                                    <items>
+                                        <core:Item key="{jsonTripType>TypeId}" text="{jsonTripType>Name}"/>
+                                    </items>
+                                </Select>
+
+                                <Label text="{i18n>ReasonTripKey}" required="true" labelFor="SlReasonTripKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlReasonTripKey" selectedKey="{ojsonHeaderTripKey>/ReasonId}" forceSelection="false" items="{ojsonReasonTripKey>/ListReasonTrip}" visible="true" editable="false">
+                                    <items>
+                                        <core:Item key="{ojsonReasonTripKey>ReasonId}" text="{ojsonReasonTripKey>Name}"/>
+                                    </items>
+                                </Select>
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>TipoImputacionKey}" required="true" labelFor="SlTipoImputacionKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlTipoImputacionKey" selectedKey="{ojsonHeaderTripKey>/ImputId}" forceSelection="false" items="{ojsonTipoImputacionKey>/ListTipoImputacion}" visible="true" class="sapUiSmallMargin" editable="false">
+                                    <items>
+                                        <core:Item key="{ojsonTipoImputacionKey>ImputId}" text="{ojsonTipoImputacionKey>Name}"/>
+                                    </items>
+                                </Select>
+
+                                <Select id="SlValTipoImputacionKey" selectedKey="{ojsonHeaderTripKey>/ValorId}" forceSelection="false" items="{ojsonValTipoImputacionKey>/ListValoresTipoImputacion}" visible="true" class="sapUiSmallMargin" editable="false">
+                                    <items>
+                                        <core:Item key="{ojsonValTipoImputacionKey>ValorId}" text="{ojsonValTipoImputacionKey>Code}"/>
+                                    </items>
+                                </Select>
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>OrigenViaje}" required="false" class="sapUiSmallMargin" />
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>PaisKey}" required="true" labelFor="SlPaisKeyKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlPaisKeyKey" selectedKey="{ojsonHeaderTripKey>/PaisId}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                    <items>
+                                        <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                    </items>
+
+                                </Select>
+
+                                <Label text="{i18n>RegionesKey}" required="true" labelFor="SlRegionKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlRegionKey" selectedKey="{ojsonHeaderTripKey>/ReginoId}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                    <items>
+                                        <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                    </items>
+
+                                </Select>
+
+                                <Label text="{i18n>CityName}" required="true" labelFor="SlCityName" class="sapUiSmallMargin" />
+
+                                <Input id="SlCityName" change="dataInfoValidation" placeholder="{i18n>valename}" value="{ojsonHeaderTripKey>/Ciudad}" visible="true" class="sapUiSmallMargin" editable="false"/>
+
+                            </HBox>
+
+                            <Panel headerText="{i18n>PanelDestinations}" expandable="true" expanded="true">
+
+                                <Table id="idDestionationsTable" growing="true" items="{ path: 'ojsonDestionationsKey>/ListDestinations' }" mode="None" selectionChange="onselectionChange">
+
+                                    <columns>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Pais}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="{i18n>Region}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Ciudad}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Fech_ini}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Hor_Inicio}"/>
+                                            </header>
+                                        </Column>
+                                    </columns>
+
+                                    <items >
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlPaisKeyKey1" selectedKey="{ojsonDestionationsKey>Pais}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                <items>
+                                                    <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlRegionKey1" selectedKey="{ojsonDestionationsKey>Region}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                <items>
+                                                    <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Input valueState="{ojsonDestionationsKey>/FirstCityState}" id="SlCityName1" change="dataInfoValidation" placeholder="{i18n>valename}" value="{ojsonDestionationsKey>Ciudad}" class="sapUiSmallMargin" editable="false"/>
+
+                                            <DatePicker id="EndtTrip1" change="handleChange" class="sapUiSmallMargin" value="{
+						                      'path': 'ojsonDestionationsKey>Fecha_Ini',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" editable="false" />
+
+                                            <TimePicker id="HoureTrip1" value="{ojsonDestionationsKey>Hora_Ini}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" class="sapUiSmallMargin" editable="false"/>
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel headerText="{i18n>PanelAdvancesCash}" expandable="true" expanded="true">
+
+                                <Table id="idAdvancesTable" growing="true" items="{ path: 'ojsonTotalAdvancesKey>/ListAdvances' }" mode="None" selectionChange="onselectionChange">
+
+                                    <columns>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Moneda_Ant_RG}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Total}"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items>
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlMonedasKey" selectedKey="{ojsonTotalAdvancesKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                <items>
+                                                    <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Input id="SlTotal3" editable="false" change="dataInfoValidation" value="{ojsonTotalAdvancesKey>Monto}" class="sapUiSmallMargin" />
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel headerText="{i18n>PanelJustifications}" expandable="true" expanded="true">
+
+                                <TextArea value="{ojsonHeaderTripKey>/Comentarios}" rows="8" width="30cm" editable="true"/>
+
+
+                            </Panel>
+
+                        </WizardStep>
+
+                        <WizardStep id="RGRegistrarDataStep" title="{i18n>RgRegisterRGStep}" validated="true" activate="dataInfoValidation">
+
+                            <Label text="Inicio del viaje: 14/06/2023 - Fin de viaje: 15/06/2023"/>
+
+                            <Panel headerText="Servicios completamente utilizados" expanded="true">
+
+                                <Label text="Fueron utilizados completamente los servicios solicitados?"/>
+
+                                <HBox>
+
+                                    <Label text="Vuelos" labelFor="StartTrip" class="sapUiSmallMargin" />
+
+                                    <core:Icon src="sap-icon://flight" id="VUELOS" class="sapUiSmallMargin"></core:Icon>
+
+                                    <VBox >
+
+                                        <RadioButtonGroup id="rbg1" columns="3" width="100%">
+                                            <RadioButton id="RB1-1" text="Si" />
+                                            <RadioButton id="RB1-2" text="No" enabled="true" />
+                                        </RadioButtonGroup>
+
+                                    </VBox>
+
+                                    <Label text="Hotel" labelFor="StartTrip" class="sapUiSmallMargin" />
+
+                                    <core:Icon src="sap-icon://bed" id="HOTEL" class="sapUiSmallMargin"></core:Icon>
+
+                                    <VBox >
+
+                                        <RadioButtonGroup id="rbg2" columns="3" width="100%">
+                                            <RadioButton id="RB1-3" text="Si" />
+                                            <RadioButton id="RB1-4" text="No" enabled="true" />
+                                        </RadioButtonGroup>
+
+                                    </VBox>
+
+                                    <Label text="Auto" labelFor="StartTrip" class="sapUiSmallMargin" />
+
+                                    <core:Icon src="sap-icon://taxi" id="CAR" class="sapUiSmallMargin"></core:Icon>
+
+                                    <VBox >
+
+                                        <RadioButtonGroup id="rbg3" columns="3" width="100%">
+                                            <RadioButton id="RB1-5" text="Si" />
+                                            <RadioButton id="RB1-6" text="No" enabled="true" />
+                                        </RadioButtonGroup>
+
+                                    </VBox>
+
+                                </HBox>
+
+                            </Panel>
+
+                            <Panel headerText="{i18n>PanelReturnCash}" expandable="false" expanded="true">
+
+                                <Button id="btnAgregarRow" icon="sap-icon://add" text="{i18n>InsertarFila}" press="onAddReturns" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnCopyRow" icon="sap-icon://copy" text="{i18n>CopiarFila}" press="onCopyReturns" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarRow" icon="sap-icon://delete" text="{i18n>BorrarFila}" press="onDeleteReturns" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnCalculateRow" icon="sap-icon://simulate" text="{i18n>CalcularTotal}" press="onCalculateRow" class="sapUiSmallMarginEnd"/>
+
+                                <Table id="idReembolsosTable" growing="true" items="{ path: 'ojsonReturnsKey>/ListReturns' }" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                    <columns>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Pais}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="{i18n>Region}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Concepto"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Valor Ant."/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Cant.Ant"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Total Ant."/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Valor Actual."/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Cant.Actual"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Total Actual."/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Moneda"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Sop"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items >
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlPaisKeyKey2" selectedKey="{ojsonReturnsKey>Pais}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlRegionKey2" selectedKey="{ojsonReturnsKey>Region}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlConceptoKey" selectedKey="{ojsonReturnsKey>ConceptosId}" forceSelection="false" items="{ojsonConceptosKey>/ListConceptos}" visible="true" class="sapUiSmallMargin" change="handleChange">
+
+                                                <items>
+                                                    <core:Item key="{ojsonConceptosKey>ConceptosId}" text="{ojsonConceptosKey>Name}" bindingContexts="{ojsonConceptosKey>/ListConceptos}" />
+                                                </items>
+
+                                            </Select>
+
+                                            <Input id="SlCantidad" change="changeCant" value="{ojsonReturnsKey>ValorAnt}" class="sapUiSmallMargin" editable="false"/>
+                                            <Input id="SlImporte" change="dataInfoValidation" value="{ojsonReturnsKey>CantAnt}" class="sapUiSmallMargin" editable="false" />
+                                            <Input id="SlTotal" editable="false" change="dataInfoValidation" value="{ojsonReturnsKey>TotalAnt}" class="sapUiSmallMargin" />
+                                            <Input id="SlCantidad1" change="changeCant" value="{ojsonReturnsKey>ValorAct}" class="sapUiSmallMargin" editable="true"/>
+                                            <Input id="SlImporte1" change="dataInfoValidation" value="{ojsonReturnsKey>CantAct}" class="sapUiSmallMargin" editable="true" />
+                                            <Input id="SlTotal1" editable="true" change="dataInfoValidation" value="{ojsonReturnsKey>TotalAct}" class="sapUiSmallMargin" />
+
+                                            <Select id="SlMonedasKey1" selectedKey="{ojsonReturnsKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <CheckBox id="check_value" selected="false" />
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+
+                        </WizardStep>
+
+                        <WizardStep id="RGVerificarDataStep" title="{i18n>RgCheckRGStep}" validated="false" activate="dataInfoValidation">
+
+                            <Panel headerText="Justificacion y comentarios" expandable="true" expanded="false">
+
+                                <TextArea value="{ojsonHeaderTripKey>/Comentarios}" rows="8" width="30cm" editable="false"/>
+
+                            </Panel>
+
+                            <Panel headerText="Detalle de los reembolsos" expandable="true" expanded="false">
+
+
+                            </Panel>
+
+                            <Panel headerText="Total de la relacion de gastos" expandable="true" expanded="true">
+
+                                <Table id="idTotalesTable" growing="true" items="{ path: 'ojsonTotalesKey>/ListTotal' }" mode="None" selectionChange="onselectionChange">
+
+                                    <columns>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Moneda"/>
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="(1)Anticipos Otorgados"/>
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="(2)Gastos realizados"/>
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Depositos:(3)"/>
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="Neto: (2)+(3)-(1)"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items>
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlMonedasKey2" selectedKey="{ojsonTotalesKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin" editable="false">
+                                                <items>
+                                                    <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                </items>
+                                            </Select>
+
+                                            <Input id="SlAnticipos" change="changeCant" value="{ojsonTotalesKey>AOTOR}" class="sapUiSmallMargin" editable="false"/>
+                                            <Input id="SlGastos" change="dataInfoValidation" value="{ojsonTotalesKey>GREALI}" class="sapUiSmallMargin" editable="false"/>
+                                            <Input id="SlDepositos" editable="false" change="dataInfoValidation" value="{ojsonTotalesKey>DEPOSI}" class="sapUiSmallMargin"/>
+                                            <Input id="SlNeto" editable="false" change="dataInfoValidation" value="{ojsonTotalesKey>NETO}" class="sapUiSmallMargin"/>
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel headerText="Saldo Neto de la relacion" expandable="true" expanded="true">
+
+
+                            </Panel>
+
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button id="btnSolLiberar" icon="sap-icon://approvals" text="{i18n>SolLiberar}" press="onAddRelLiberar" class="sapUiSmallMarginEnd"/>
+                            </OverflowToolbar>
+
+                        </WizardStep>
+
+                        <WizardStep id="RGConfirmarDataStep" title="Confirmar" validated="false" activate="dataInfoValidation">
+
+                            <Text text="{i18n>TrRelacionStepText}" class="sapUiSmallMarginBottom"  />
+                            <Text text="{i18n>TrRelacionStepText1}" class="sapUiSmallMarginBottom" />
+                            <Text text="{i18n>TrRelacionStepText2}" class="sapUiSmallMarginBottom" />
+
+                        </WizardStep>
+                    </Wizard>
+
+                </content>
+
+                <footer>
+
+                    <OverflowToolbar>
+
+                        <ToolbarSpacer />
+
+                        <Button text="{i18n>SaveRG}" press="handleWizardCancel1" />
+
+                    </OverflowToolbar>
+                </footer>
+
+            </Page>
+        </pages>
+
+    </NavContainer>
+
+</mvc:View>

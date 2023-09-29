@@ -1,0 +1,14 @@
+{
+
+    "TipoImputacionKey": "",
+    "ListTipoImputacion": [
+        {
+            "ImputId": "0001",
+            "Name": "Centro de Costos"
+        },
+        {
+            "ImputId": "0002",
+            "Name": "Elemento PEP"
+        }
+    ]
+}

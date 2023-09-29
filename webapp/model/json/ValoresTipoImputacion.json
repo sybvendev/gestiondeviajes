@@ -1,0 +1,25 @@
+{
+    "ValoresTipoImputacionKey": "",
+    "ListValoresTipoImputacion": [
+        {
+            "ValorId": "00001",
+            "Code": "NINS009003"
+        },
+        {
+            "ValorId": "00002",
+            "Code": "NINS009043"
+        },
+        {
+            "ValorId": "00003",
+            "Code": "NINS009005"
+        },
+        {
+            "ValorId": "00004",
+            "Code": "EP001"
+        },
+        {
+            "ValorId": "00005",
+            "Code": "EP002"
+        }
+    ]
+}

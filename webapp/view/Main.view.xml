@@ -1,0 +1,156 @@
+<mvc:View controllerName="sybvensapui5.gestiondeviajes1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page title="{i18n>title}">
+
+        <content>
+            <Panel headerText="{i18n>subtitle2}">
+                <Label id="labelEmployee" labelFor="slEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin" visible="true"/>
+                <Select id="slEmployee" selectedKey="{jsonEmployees>/EmployeeKey}" forceSelection="false" items="{jsonEmployees>/ListEmployees}" visible="true">
+                    <items>
+                        <core:Item key="{jsonEmployees>EmployeeId}" text="{jsonEmployees>Name}"/>
+                    </items>
+                </Select>
+
+                <IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+                    <items>
+
+                        <IconTabFilter text="Solicitudes de viajes" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <Button id="btnCreateTrip" text="Crear Solicitud" icon="sap-icon://create" press="toCreateTrip" class="sapUiSmallMarginEnd"/>
+
+                            <SearchField search="onSearch" width="10%">
+                            </SearchField>
+
+                            <Table id="tableViajes" items="{oJSONModelSolViajes>/ListTravels}">
+
+                                <columns>
+
+                                    <Column width="6em">
+
+
+                                        <header>
+                                            <Label text="{i18n>Via_NroViaje}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="{i18n>Via_CentroCosto}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="{i18n>Via_ElementoPEP}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="{i18n>Via_Periodo}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="{i18n>Via_Destion}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="{i18n>Via_Tipo}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="{i18n>Via_Motivo}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="{i18n>Via_Estatus}"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="{i18n>Via_Alerta}"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="{i18n>Via_Aprobadores}"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active">
+
+                                        <Label text="{oJSONModelSolViajes>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_CentroCosto}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_ElementoPEP}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Periodo}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Destion}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Tipo}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Motivo}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Estatus}"/>
+                                        <Label text="{oJSONModelSolViajes>Via_Alert}"/>
+                                        <core:Icon src="{oJSONModelSolViajes>Via_Aprobadores}" press="showApprovers"></core:Icon>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                            <Button id="btnIrsolicitud" icon="sap-icon://detail-view" text="{i18n>Irsolicitud}" press="onShowRequest" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnCopiarSolicitud" icon="sap-icon://copy" text="{i18n>CopiarSolicitud}" press="onCopyRequest" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnCancelarSolicitud" icon="sap-icon://sys-cancel-2" text="{i18n>CancelarSolicitud}" press="onCancelRequest" class="sapUiSmallMarginEnd"/>
+                            <Button id="btnAgregarSolicitud" icon="sap-icon://add" text="{i18n>AgregarRelacion}" press="toCreateRelation" class="sapUiSmallMarginEnd" />
+
+                        </IconTabFilter>
+
+                        <IconTabFilter text="Relaciones" icon="sap-icon://travel-expense-report" iconColor="Neutral" key="travel_exp">
+
+
+
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="Rel.Otros Gastos" icon="sap-icon://collections-insight" iconColor="Neutral" key="travel_insight">
+
+
+
+                        </IconTabFilter>
+
+
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="Asistentes" icon="sap-icon://collaborate" iconColor="Neutral" key="collaboratet">
+
+
+
+                        </IconTabFilter>
+
+                    </items>
+                </IconTabBar>
+            </Panel>
+
+        </content>
+
+    </Page>
+
+</mvc:View>
