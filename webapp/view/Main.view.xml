@@ -24,7 +24,7 @@
                             <SearchField search="onSearch" width="10%">
                             </SearchField>
 
-                            <Table id="tableViajes" items="{oJSONModelSolViajes>/ListTravels}">
+                            <Table id="tableViajes" items="{oJSONModelSolViajes>/ListTravels}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
 
                                 <columns>
 
@@ -119,13 +119,120 @@
                             <Button id="btnCancelarSolicitud" icon="sap-icon://sys-cancel-2" text="{i18n>CancelarSolicitud}" press="onCancelRequest" class="sapUiSmallMarginEnd"/>
                             <Button id="btnAgregarSolicitud" icon="sap-icon://add" text="{i18n>AgregarRelacion}" press="toCreateRelation" class="sapUiSmallMarginEnd" />
 
+                            <Panel headerText="Relaciones de Gastos de Viajes" expandable="false" expanded="true" class="sapUiSmallMarginTop">
+
+
+                                <Button id="btnCreateRel" text="Crear Relacion" icon="sap-icon://create" press="toCreateRelation" class="sapUiSmallMarginEnd"/>
+
+                                <SearchField search="onSearchRel" width="10%">
+                                </SearchField>
+
+                                <Table id="tableRelaciones" items="{oJSONModelRelViajes>/ListRelaciones}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                    <columns>
+
+                                        <Column width="6em">
+
+
+                                            <header>
+                                                <Label text="{i18n>Via_NroViaje}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="7em">
+                                            <header>
+                                                <Label text="{i18n>Via_CentroCosto}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="6em">
+                                            <header>
+                                                <Label text="{i18n>Via_ElementoPEP}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column >
+                                            <header>
+                                                <Label text="{i18n>Via_Periodo}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="7em">
+                                            <header>
+                                                <Label text="{i18n>Via_Destion}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="8em">
+                                            <header>
+                                                <Label text="{i18n>Via_Tipo}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="7em">
+                                            <header>
+                                                <Label text="{i18n>Via_Motivo}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="7em">
+                                            <header>
+                                                <Label text="{i18n>Via_DateRelease}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="6em">
+                                            <header>
+                                                <Label text="{i18n>Via_Estatus}"/>
+                                            </header>
+                                        </Column>
+
+
+                                        <Column>
+                                            <header>
+                                                <Label text="{i18n>Via_Alerta}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column width="3em">
+                                            <header>
+                                                <Label text="{i18n>Via_Aprobadores}"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items>
+
+                                        <ColumnListItem type="Active">
+
+                                            <Label text="{oJSONModelRelViajes>Via_NroViaje}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_CentroCosto}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_ElementoPEP}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Periodo}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Destion}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Tipo}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Motivo}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_DateRelease}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Estatus}"/>
+                                            <Label text="{oJSONModelRelViajes>Via_Alert}"/>
+                                            <core:Icon src="{oJSONModelRelViajes>Via_Aprobadores}" press="showApprovers"></core:Icon>
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                                <Button id="btnIrRelation" icon="sap-icon://detail-view"        text="{i18n>IrRelation}"       press="onShowRelation"   class="sapUiSmallMarginEnd"/>
+                                <Button id="btnCopiarRelation" icon="sap-icon://copy"           text="{i18n>CopiarRelation}"   press="onCopyRelation"   class="sapUiSmallMarginEnd"/>
+                                <Button id="btnCancelarRelation" icon="sap-icon://sys-cancel-2" text="{i18n>CancelarRelation}" press="onCancelRelation" class="sapUiSmallMarginEnd"/>
+
+                            </Panel>
+
                         </IconTabFilter>
 
-                        <IconTabFilter text="Relaciones" icon="sap-icon://travel-expense-report" iconColor="Neutral" key="travel_exp">
 
-
-
-                        </IconTabFilter>
 
                         <IconTabSeparator icon=""/>
 
