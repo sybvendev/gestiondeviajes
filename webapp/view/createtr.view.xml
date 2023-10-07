@@ -1,0 +1,962 @@
+<mvc:View xmlns:calendar="sap.ui.unified.calendar" controllerName="sybvensapui6.gestiondeviajes3.controller.createtr"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout">
+
+    <NavContainer id="wizardNavContainer">
+
+        <pages>
+
+            <Page title="{i18n>createTR}" id="wizardContentPage" showHeader="true" titleLevel="H6" titleAlignment="Center">
+
+                <content>
+
+                    <Wizard id="CreateTRWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+
+                        <WizardStep id="TrGeneralDataStep" title="{i18n>TrGeneralDataStep}" validated="true" activate="dataInfoValidation">
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>StartTrip}" required="true" labelFor="StartTrip" class="sapUiSmallMargin" />
+
+                                <DatePicker id="StartTrip" change="handleChange" class="sapUiSmallMarginBottom" value="{
+						      'path': '/valueDP6',
+						     'type': 'sap.ui.model.type.Date',
+						     'formatOptions': {
+							   'pattern': 'dd/MM/y'
+						       }
+					            }"/>
+
+
+                                <Label text="{i18n>HourtTrip}" required="true" labelFor="HourtTrip" class="sapUiSmallMargin"/>
+
+                                <TimePicker id="HourtTrip" value="{/timePickers/TP1/value}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" />
+
+
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>EndtTrip}" required="true" labelFor="EndtTrip" class="sapUiSmallMargin" />
+
+
+                                <DatePicker id="EndtTrip" change="handleChange" class="sapUiSmallMarginBottom" value="{
+						  'path': '/valueDP6',
+						  'type': 'sap.ui.model.type.Date',
+						  'formatOptions': {
+							'pattern': 'dd/MM/y'
+						  }
+					        }"/>
+
+                                <Label text="{i18n>HoureTrip}" required="true" labelFor="HoureTrip" class="sapUiSmallMargin"/>
+
+
+                                <TimePicker id="HoureTrip" value="{/timePickers/TP1/value}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" />
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+                                <Label text="{i18n>TripType}" required="true" labelFor="SlTripType" class="sapUiSmallMargin" />
+
+                                <Select editable="false" id="SlTripType" selectedKey="{jsonTripType>/TripTypeKey}" forceSelection="false" items="{jsonTripType>/ListTripType}" visible="true">
+                                    <items>
+                                        <core:Item key="{jsonTripType>TypeId}" text="{jsonTripType>Name}"/>
+                                    </items>
+                                </Select>
+
+                                <Label text="{i18n>ReasonTripKey}" required="true" labelFor="SlReasonTripKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlReasonTripKey" selectedKey="{ojsonReasonTripKey>/ReasonTripKey}" forceSelection="false" items="{ojsonReasonTripKey>/ListReasonTrip}" visible="true">
+                                    <items>
+                                        <core:Item key="{ojsonReasonTripKey>ReasonId}" text="{ojsonReasonTripKey>Name}"/>
+                                    </items>
+                                </Select>
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>TipoImputacionKey}" required="true" labelFor="SlTipoImputacionKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlTipoImputacionKey" selectedKey="{ojsonTipoImputacionKey>/ImputId}" forceSelection="false" items="{ojsonTipoImputacionKey>/ListTipoImputacion}" visible="true" class="sapUiSmallMargin">
+                                    <items>
+                                        <core:Item key="{ojsonTipoImputacionKey>ImputId}" text="{ojsonTipoImputacionKey>Name}"/>
+                                    </items>
+                                </Select>
+
+                                <Select id="SlValTipoImputacionKey" selectedKey="{ojsonValTipoImputacionKey>/ValorId}" forceSelection="false" items="{ojsonValTipoImputacionKey>/ListValoresTipoImputacion}" visible="true" class="sapUiSmallMargin">
+                                    <items>
+                                        <core:Item key="{ojsonValTipoImputacionKey>ValorId}" text="{ojsonValTipoImputacionKey>Code}"/>
+                                    </items>
+                                </Select>
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+
+                                <Label text="{i18n>AgenciaViajesKey}" required="true" labelFor="SlAgenciaViajesKey" class="sapUiSmallMargin" />
+
+
+                                <Select id="SlAgenciaViajesKey" selectedKey="{ojsonAgenciaViajesKey>/ValorId}" forceSelection="false" items="{ojsonAgenciaViajesKey>/ListAgenciaViajes}" visible="true" class="sapUiSmallMargin">
+                                    <items>
+                                        <core:Item key="{ojsonAgenciaViajesKey>AgenciaId}" text="{ojsonAgenciaViajesKey>Name}"/>
+                                    </items>
+                                </Select>
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>OrigenViaje}" required="false" class="sapUiSmallMargin" />
+
+                            </HBox>
+
+                            <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                <Label text="{i18n>PaisKey}" required="true" labelFor="SlPaisKeyKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlPaisKeyKey" selectedKey="{ojsonPaisesKey>/PaisId}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin">
+
+                                    <items>
+                                        <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                    </items>
+
+                                </Select>
+
+                                <Label text="{i18n>RegionesKey}" required="true" labelFor="SlRegionKey" class="sapUiSmallMargin" />
+
+                                <Select id="SlRegionKey" selectedKey="{ojsonRegionesKey>/ReginoId}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin">
+
+                                    <items>
+                                        <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                    </items>
+
+                                </Select>
+
+                                <Label text="{i18n>CityName}" required="true" labelFor="SlCityName" class="sapUiSmallMargin" />
+
+                                <Input valueState="{finalProjectModel1>/FirstNameState}" id="SlCityName" change="dataInfoValidation" placeholder="{i18n>valename}" value="{finalProjectModel1>/FirstName}" visible="{finalProjectModel1>/visibilityeni}" class="sapUiSmallMargin" />
+
+                            </HBox>
+
+                            <Panel headerText="{i18n>PanelDestinations}" expandable="true" expanded="true">
+
+                                <Button id="btnAgregarDestino" icon="sap-icon://add" text="{i18n>AgregarDestino}" press="onAddDestination" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarDestino" icon="sap-icon://delete" text="{i18n>EliminarDestino}" press="onDeleteDestination" class="sapUiSmallMarginEnd"/>
+
+                                <Table id="idDestionationsTable" growing="true" items="{ path: 'ojsonDestionationsKey>/ListDestinations' }" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                    <columns>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Pais}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="{i18n>Region}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Ciudad}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Fech_ini}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Hor_Inicio}"/>
+                                            </header>
+                                        </Column>
+                                    </columns>
+
+                                    <items >
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlPaisKeyKey1" selectedKey="{ojsonDestionationsKey>Pais}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlRegionKey1" selectedKey="{ojsonDestionationsKey>Region}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Input valueState="{ojsonDestionationsKey>/FirstCityState}" id="SlCityName1" change="dataInfoValidation" placeholder="{i18n>valename}" value="{ojsonDestionationsKey>Ciudad}" class="sapUiSmallMargin" />
+
+                                            <DatePicker id="EndtTrip1" change="handleChange" class="sapUiSmallMargin" value="{
+						                      'path': 'ojsonDestionationsKey>Fecha_Ini',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                            <TimePicker id="HoureTrip1" value="{ojsonDestionationsKey>Hora_Ini}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" class="sapUiSmallMargin" />
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel headerText="{i18n>PanelAdvances}" expandable="true" expanded="true">
+
+                                <Button id="btnAgregarAnticipo" icon="sap-icon://add" text="{i18n>AgregarAnticipo}" press="onAddAdvances" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarAnticipo" icon="sap-icon://delete" text="{i18n>EliminarAnticipo}" press="onDeleteAdvances" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnCopiarAnticipo" icon="sap-icon://copy" text="{i18n>CopiarAnticipo}" press="onCopyAdvances" class="sapUiSmallMarginEnd"/>
+
+                                <Table id="idAdvancesTable" growing="true" items="{ path: 'ojsonAdvancesKey>/ListAdvances' }" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                    <columns>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Pais_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="{i18n>Region_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Concepto_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Cant_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Import_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Moneda_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Total_Dest}"/>
+                                            </header>
+                                        </Column>
+
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>InfoA_Dest}"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items>
+
+                                        <ColumnListItem type="Active">
+
+                                            <Select id="SlPaisKeyKey2" selectedKey="{ojsonAdvancesKey>Pais}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlRegionKey2" selectedKey="{ojsonAdvancesKey>Region}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlConceptoKey" selectedKey="{ojsonAdvancesKey>Concepto}" forceSelection="false" items="{ojsonConceptosKey>/ListConceptos}" visible="true" class="sapUiSmallMargin" change="handleChange">
+
+                                                <items>
+                                                    <core:Item key="{ojsonConceptosKey>ConceptosId}" text="{ojsonConceptosKey>Name}" bindingContexts="{ojsonConceptosKey>/ListConceptos}" />
+                                                </items>
+
+                                            </Select>
+
+                                            <Input id="SlCantidad" change="changeCant" value="{ojsonAdvancesKey>Cantidad}" class="sapUiSmallMargin" />
+
+                                            <Input id="SlImporte" change="dataInfoValidation" value="{ojsonAdvancesKey>Importe}" class="sapUiSmallMargin" editable="false" />
+
+                                            <Select id="SlMonedasKey" selectedKey="{ojsonAdvancesKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin">
+
+                                                <items>
+                                                    <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Input id="SlTotal" editable="false" change="dataInfoValidation" value="{ojsonAdvancesKey>Total}" class="sapUiSmallMargin" />
+
+                                            <Input id="SlInfoAdicional" editable="true" change="dataInfoValidation" value="{ojsonAdvancesKey>InfoAdi}" class="sapUiSmallMargin" />
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel headerText="{i18n>PanelJustifications}" expandable="true" expanded="true">
+
+                                <TextArea value="{finalProjectModel1>/Comments}" rows="8" width="30cm" />
+
+                            </Panel>
+
+
+                        </WizardStep>
+
+                        <WizardStep id="TrServicesStep" validated="true" title="{i18n>TrServicesStep}" activate="dataInfoValidation">
+
+                            <Panel headerText="{i18n>PanelServices}" expandable="false">
+
+                                <Table id="idServicesTable" items="{ path: 'ojsonDestionationsKey>/ListDestinations' }">
+
+                                    <columns>
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Pais}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="7em">
+                                            <header>
+                                                <Label text="{i18n>Region}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Origen_Destino}"/>
+                                            </header>
+                                        </Column>
+
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Fech_ini}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Hor_Inicio}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Vuelo_d}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Hotel_d}"/>
+                                            </header>
+                                        </Column>
+
+                                        <Column hAlign="Center" width="6em">
+                                            <header>
+                                                <Label text="{i18n>Auto_d}"/>
+                                            </header>
+                                        </Column>
+
+                                    </columns>
+
+                                    <items>
+
+                                        <ColumnListItem type="Active" press="onItemPress">
+
+                                            <Select id="SlPaisKeyKey3" selectedKey="{ojsonDestionationsKey>Pais}" forceSelection="false" items="{ojsonPaisesKey>/ListPaises}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                <items>
+                                                    <core:Item key="{ojsonPaisesKey>PaisId}" text="{ojsonPaisesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Select id="SlRegionKey3" selectedKey="{ojsonDestionationsKey>Region}" forceSelection="false" items="{ojsonRegionesKey>/ListRegiones}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                <items>
+                                                    <core:Item key="{ojsonRegionesKey>ReginoId}" text="{ojsonRegionesKey>Name}"/>
+                                                </items>
+
+                                            </Select>
+
+                                            <Input id="SlCiudad" value="{ojsonDestionationsKey>Ciudad}" class="sapUiSmallMargin" editable="false"/>
+
+                                            <DatePicker id="EndtTrip2" change="handleChange" class="sapUiSmallMargin" value="{
+						                      'path': 'ojsonDestionationsKey>Fecha_Ini',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" editable="false" />
+
+                                            <TimePicker id="HoureTrip2" value="{ojsonDestionationsKey>Hora_Ini}" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" maskMode="Off" placeholder="{i18n>HourtTripPlaceHolder}" class="sapUiSmallMargin" editable="false" />
+
+                                            <core:Icon src="{ojsonDestionationsKey>FVuelo}" press="showApprovers"></core:Icon>
+                                            <core:Icon src="{ojsonDestionationsKey>Fhotel}" press="showApprovers"></core:Icon>
+                                            <core:Icon src="{ojsonDestionationsKey>FAuto}" press="showApprovers"></core:Icon>
+
+                                        </ColumnListItem>
+
+                                    </items>
+
+                                </Table>
+
+                            </Panel>
+
+                            <Panel id="Vuelospageid" headerText="{i18n>Vuelo_d}" expandable="true" expanded="true">
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="Desde" labelFor="StartVuelo" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="StartVuelo" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>llegada',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                    <Label text="Hasta" labelFor="EndVuelo" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="EndVuelo" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>Salida',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="Monto" labelFor="MontoVuelo" class="sapUiSmallMarginEnd" />
+
+                                    <Input id="MontoVuelo" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Monto}" class="sapUiSmallMarginEnd" />
+
+                                    <Label text="{i18n>MonedaVuelo}" labelFor="MonedaVuelo" class="sapUiSmallMarginEnd" />
+
+                                    <Select id="SlMonedaVuelo" selectedKey="{ojsonDestionationsKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMarginEnd">
+
+                                        <items>
+                                            <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                        </items>
+
+                                    </Select>
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>LocalizadorVuelo}" labelFor="LocalizadorVuelo" class="sapUiSmallMarginEnd" />
+                                    <Input id="LocalizadorVuelo" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Localizador}" class="sapUiSmallMarginEnd" />
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>ComentariosVuelo}" labelFor="ComentariosVuelo" class="sapUiSmallMarginEnd" />
+                                    <Input id="ComentariosVuelo" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Comentarios}" class="sapUiSmallMarginEnd" />
+
+                                </HBox>
+
+                                <Button id="btnAgregarVuelo" icon="sap-icon://add" text="{i18n>AgregarVuelo}" press="onAddVuelo" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarVuelo" icon="sap-icon://delete" text="{i18n>EliminarVuelo}" press="onBorrarVuelo" class="sapUiSmallMarginEnd"/>
+
+                            </Panel>
+
+
+                            <Panel id="hotelpageid" headerText="{i18n>Hotel_d}" expandable="true" expanded="true">
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>StartHotel}" labelFor="StartHotel" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="StartHotel" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>llegada',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                    <Label text="{i18n>EndHotel}" labelFor="EndHotel" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="EndHotel" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>Salida',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>MontoHotel}" labelFor="MontoHotel" class="sapUiSmallMarginEnd" />
+
+                                    <Input id="SlMontoHotel" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Monto}" class="sapUiSmallMarginEnd" />
+
+                                    <Label text="{i18n>MonedaHotel}" labelFor="MonedaHotel" class="sapUiSmallMarginEnd" />
+
+                                    <Select id="SlMonedaHotel" selectedKey="{ojsonDestionationsKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMarginEnd">
+
+                                        <items>
+                                            <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                        </items>
+
+                                    </Select>
+
+
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>LocalizadorHotel}" labelFor="LocalizadorHotel" class="sapUiSmallMarginEnd" />
+                                    <Input id="LocalizadorHotel" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Localizador}" class="sapUiSmallMarginEnd" />
+
+
+                                </HBox>
+
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>ComentariosHotel}" labelFor="ComentariosHotel" class="sapUiSmallMarginEnd" />
+                                    <Input id="ComentariosHotel" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Comentarios}" class="sapUiSmallMarginEnd" />
+
+                                </HBox>
+
+                                <Button id="btnAgregarHotel" icon="sap-icon://add" text="{i18n>AgregarHotel}" press="onAddHotel" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarHotel" icon="sap-icon://delete" text="{i18n>EliminarHotel}" press="onBorrarHotel" class="sapUiSmallMarginEnd"/>
+
+                            </Panel>
+
+                            <Panel id="Autopageid" headerText="{i18n>Auto_d}" expandable="true" expanded="true">
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="Desde" labelFor="StartAuto" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="StartAuto" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>llegada',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                    <Label text="Hasta" labelFor="EndAuto" class="sapUiSmallMargin" />
+
+                                    <DatePicker id="EndAuto" class="sapUiSmallMarginBottom" value="{
+						                      'path': 'ojsonDestionationsKey>Salida',
+						                      'type': 'sap.ui.model.type.Date',
+						                      'formatOptions': {
+							                  'pattern': 'dd/MM/y'
+						                       }
+					                        }" />
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="Monto" labelFor="MontoAuto" class="sapUiSmallMarginEnd" />
+
+                                    <Input id="MontoAuto" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Monto}" class="sapUiSmallMarginEnd" />
+
+                                    <Label text="{i18n>MonedaHotel}" labelFor="MonedaHotel" class="sapUiSmallMarginEnd" />
+
+                                    <Select id="SlMontoAuto" selectedKey="{ojsonDestionationsKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMarginEnd">
+
+                                        <items>
+                                            <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                        </items>
+
+                                    </Select>
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>LocalizadorHotel}" labelFor="LocalizadorAuto" class="sapUiSmallMarginEnd" />
+                                    <Input id="LocalizadorAuto" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Localizador}" class="sapUiSmallMarginEnd" />
+
+                                </HBox>
+
+                                <HBox alignItems="Start" justifyContent="Start" width="100%">
+
+                                    <Label text="{i18n>ComentariosHotel}" labelFor="ComentariosAuto" class="sapUiSmallMarginEnd" />
+                                    <Input id="ComentariosAuto" editable="true" change="dataInfoValidation" value="{ojsonDestionationsKey>Comentarios}" class="sapUiSmallMarginEnd" />
+
+                                </HBox>
+
+                                <Button id="btnAgregarAuto" icon="sap-icon://add" text="{i18n>AgregarAuto}" press="onAddAutos" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnBorrarAuto" icon="sap-icon://delete" text="{i18n>EliminarAuto}" press="onBorrarAuto" class="sapUiSmallMarginEnd"/>
+
+                            </Panel>
+
+                        </WizardStep>
+
+
+                        <WizardStep id="TrCheckStep" validated="false" title="{i18n>TrCheckStep}">
+
+                            <Panel headerText="Resumen de la solicitud" expandable="true" expanded="false">
+                                <HBox>
+                                    <Text text="Pasajero:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="4968968-Katty Sorelis" class="sapUiTinyMarginEnd"/>
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Posicion:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="CONS SAP - Consultor SAP" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox>
+                                    <Text text="Grupo:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Empleados" class="sapUiTinyMarginEnd"/>
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Tipo de Viaje:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Viaje Nacional" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Motivo de Viaje:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Visita Proveedores" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Periodo:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="08/07/2023 06:00 - 10/07/2023" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Dias Totales del Viaje:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="03" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Origen:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Venezuela/VEDF - Distrito Capital: Caracas" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox >
+                                    <Text text="Destino(s):" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Venezuela/VENE - Nueva Esparta: Margarita" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+
+                                <HBox>
+
+                                    <Text text="Monto Total del Viaje:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="---" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox>
+
+                                    <Text text="Servicios Solicitados:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="Auto Alquilado" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox>
+
+                                    <Text text="Centro de Costo:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="NINS009003" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox>
+
+                                    <Text text="Estatus de la solicitud:" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="En borrador" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                                <HBox>
+
+                                    <Text text="Agencia de Viajes" class="sapUiTinyMarginEnd" width="4cm"/>
+                                    <Text text="SERVICIOS GENERALES CORPORACION DIG" class="sapUiTinyMarginEnd"/>
+
+                                </HBox>
+
+                            </Panel>
+
+                            <Panel headerText="Justificacion y comentarios" expandable="true" expanded="false">
+
+                                <TextArea value="{finalProjectModel1>/Comments}" rows="8" width="30cm" />
+
+                            </Panel>
+
+                            <Panel headerText="Resumen de Montos" expandable="true" expanded="true">
+                                <HBox >
+
+                                    <Panel headerText="Montos Solicitados" expandable="true" expanded="true">
+
+                                        <Table id="idAdvancesTable1" items="{ path: 'ojsonAdvancesKey>/ListAdvances' }" mode="None" selectionChange="onselectionChange">
+
+                                            <columns>
+
+
+                                                <Column hAlign="Center" width="1cm">
+                                                    <header>
+                                                        <Label text="{i18n>Concepto_Dest}"/>
+                                                    </header>
+                                                </Column>
+
+                                                <Column hAlign="Center" width="1cm">
+                                                    <header>
+                                                        <Label text="Monto"/>
+                                                    </header>
+                                                </Column>
+
+                                                <Column hAlign="Center" width="1cm">
+                                                    <header>
+                                                        <Label text="{i18n>Moneda_Dest}"/>
+                                                    </header>
+                                                </Column>
+
+
+                                            </columns>
+
+                                            <items>
+
+                                                <ColumnListItem type="Active">
+
+
+                                                    <Select id="SlConceptoKey1" selectedKey="{ojsonAdvancesKey>Concepto}" forceSelection="false" items="{ojsonConceptosKey>/ListConceptos}" visible="true" class="sapUiSmallMargin" change="handleChange" editable="false">
+
+                                                        <items>
+                                                            <core:Item key="{ojsonConceptosKey>ConceptosId}" text="{ojsonConceptosKey>Name}" bindingContexts="{ojsonConceptosKey>/ListConceptos}" />
+                                                        </items>
+
+                                                    </Select>
+
+                                                    <Input id="SlTotal1" editable="false" change="dataInfoValidation" value="{ojsonAdvancesKey>Total}" class="sapUiSmallMargin" />
+
+
+                                                    <Select id="SlMonedasKey1" selectedKey="{ojsonAdvancesKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                        <items>
+                                                            <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                        </items>
+
+                                                    </Select>
+
+
+
+                                                </ColumnListItem>
+
+                                            </items>
+
+                                        </Table>
+
+                                    </Panel>
+
+                                    <VBox >
+                                        <Panel headerText="Montos Totales de servicios" expandable="true" expanded="true">
+                                            <Table id="idAdvancesTable2" items="{ path: 'ojsonAdvancesKey>/ListAdvances' }" mode="None" selectionChange="onselectionChange">
+
+                                                <columns>
+
+
+                                                    <Column hAlign="Center" width="1cm">
+                                                        <header>
+                                                            <Label text="{i18n>Concepto_Dest}"/>
+                                                        </header>
+                                                    </Column>
+
+                                                    <Column hAlign="Center" width="1cm">
+                                                        <header>
+                                                            <Label text="Monto"/>
+                                                        </header>
+                                                    </Column>
+
+                                                    <Column hAlign="Center" width="1cm">
+                                                        <header>
+                                                            <Label text="{i18n>Moneda_Dest}"/>
+                                                        </header>
+                                                    </Column>
+
+
+                                                </columns>
+
+                                                <items>
+
+                                                    <ColumnListItem type="Active">
+
+
+                                                        <Select id="SlConceptoKey2" selectedKey="{ojsonAdvancesKey>Concepto}" forceSelection="false" items="{ojsonConceptosKey>/ListConceptos}" visible="true" class="sapUiSmallMargin" change="handleChange" editable="false">
+
+                                                            <items>
+                                                                <core:Item key="{ojsonConceptosKey>ConceptosId}" text="{ojsonConceptosKey>Name}" bindingContexts="{ojsonConceptosKey>/ListConceptos}" />
+                                                            </items>
+
+                                                        </Select>
+
+                                                        <Input id="SlTotal2" editable="false" change="dataInfoValidation" value="{ojsonAdvancesKey>Total}" class="sapUiSmallMargin" />
+
+
+                                                        <Select id="SlMonedasKey2" selectedKey="{ojsonAdvancesKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMargin" editable="false">
+
+                                                            <items>
+                                                                <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                            </items>
+
+                                                        </Select>
+
+
+                                                    </ColumnListItem>
+
+                                                </items>
+
+                                            </Table>
+
+                                        </Panel>
+
+                                        <Panel headerText="Montos Totales deL Viaje" expandable="true" expanded="true">
+
+                                            <Table id="idTotalAmounts" items="{ path: 'ojsonAdvancesKey>/ListAdvances' }" mode="None" selectionChange="onselectionChange">
+
+                                                <Column hAlign="Center" width="6em">
+                                                    <header>
+                                                        <Label text="{i18n>Moneda_Dest}"/>
+                                                    </header>
+                                                </Column>
+
+                                                <Column hAlign="Center" width="6em">
+                                                    <header>
+                                                        <Label text="Monto Total"/>
+                                                    </header>
+                                                </Column>
+
+                                                <items>
+
+                                                    <ColumnListItem type="Active">
+
+                                                        <Input id="SlImporte4" change="dataInfoValidation" value="{ojsonAdvancesKey>Importe}" class="sapUiSmallMargin" editable="false" />
+
+                                                        <Select id="SlMontoAuto3" selectedKey="{ojsonDestionationsKey>Moneda}" forceSelection="false" items="{ojsonMonedasKey>/ListMonedas}" visible="true" class="sapUiSmallMarginEnd" editable="false">
+
+                                                            <items>
+                                                                <core:Item key="{ojsonMonedasKey>MonedasId}" text="{ojsonMonedasKey>Name}"/>
+                                                            </items>
+
+                                                        </Select>
+
+                                                    </ColumnListItem>
+
+                                                </items>
+
+                                            </Table>
+                                        </Panel>
+
+
+                                    </VBox >
+
+                                </HBox>
+
+                            </Panel>
+
+
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button id="btnSolCotizacion" icon="sap-icon://expense-report" text="{i18n>SolCotizacion}" press="onAddCotizacion" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnSolLiberar" icon="sap-icon://approvals" text="{i18n>SolLiberar}" press="onAddSolLiberar" class="sapUiSmallMarginEnd"/>
+                            </OverflowToolbar>
+
+
+
+                        </WizardStep>
+
+
+                        <WizardStep id="TrConfirmStep" validated="false" title="{i18n>TrConfirmStep}" complete="true">
+
+
+                            <Panel headerText="Detalles de Confirmacion" expandable="false" expanded="true">
+
+                                <Text text="{i18n>TrConfirmStepText}" class="sapUiSmallMarginBottom" />
+                                <Text text="{i18n>TrConfirmStepText1}" class="sapUiSmallMarginBottom" />
+                                <Text text="{i18n>TrConfirmStepText2}" class="sapUiSmallMarginBottom" />
+
+                            </Panel>
+
+                            <Button id="btnFinalizar" icon="sap-icon://close-command-field" text="{i18n>Finalizar}" press="onEnd" class="sapUiSmallMarginEnd"/>
+
+                        </WizardStep>
+
+
+                    </Wizard>
+
+                </content>
+
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Button text="{i18n>cancelWizard}" press="handleWizardCancel" />
+                        <Button text="{i18n>cancelSaveTR}" press="handleWizardCancel1" />
+                    </OverflowToolbar>
+                </footer>
+
+            </Page>
+
+        </pages>
+
+    </NavContainer>
+
+</mvc:View>

@@ -1,0 +1,56 @@
+{
+
+    "ListRechazadas": [
+
+        {
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1612",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "24/05/2023 - 28/05/2023",
+            "Via_Apellido": "Rincon",
+            "Via_Nombre": "Moises",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "SUP SISO&MR - Supervisor de planta",
+            "Via_Celular": "+584128083155",
+            "Via_Correo": "MoisesRinconz@digitel.com.ve"
+
+        },
+
+        {
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1613",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "22/02/2023 - 25/02/2023",
+            "Via_Apellido": "Chacon",
+            "Via_Nombre": "Jose",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP PLANT - Gerente de planta 2",
+            "Via_Celular": "+584127085010",
+            "Via_Correo": "ChaconJose@digitel.com.ve"
+
+        },
+
+        {
+            
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1614",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "15/09/2023 - 20/09/2023",
+            "Via_Apellido": "Blades",
+            "Via_Nombre": "Ruben",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP PLA TAN - Personal Limpieza",
+            "Via_Celular": "+584127087048",
+            "Via_Correo": "ruben_blades@digitel.com.ve"
+
+        }
+
+    ]
+
+}

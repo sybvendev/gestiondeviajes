@@ -1,0 +1,48 @@
+{
+    "ReasonTripKey": "",
+    "ListReasonTrip": [
+        {
+            "ReasonId": "001",
+            "Name": "Instalaciones/Construcciones"
+        },
+        {
+            "ReasonId": "002",
+            "Name": "Visita Distribuidores Tarjetas"
+        },
+        {
+            "ReasonId": "003",
+            "Name": "Visita Proveedores"
+        },
+        {
+            "ReasonId": "004",
+            "Name": "Estacionamiento Empleados"
+        },
+        {
+            "ReasonId": "005",
+            "Name": "Servicios Basicos"
+        },
+        {
+            "ReasonId": "006",
+            "Name": "Atencion de fallas"
+        },
+        {
+            "ReasonId": "007",
+            "Name": "Auditorias / Tomas Fisicas"
+        }
+        ,
+        {
+            "ReasonId": "008",
+            "Name": "Mantenimientos"
+        }
+        ,
+        {
+            "ReasonId": "009",
+            "Name": "Proyectos"
+        }
+        ,
+        {
+            "ReasonId": "010",
+            "Name": "Tramites Legales"
+        }
+    ]
+}

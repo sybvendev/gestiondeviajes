@@ -1,0 +1,720 @@
+<mvc:View controllerName="sybvensapui6.gestiondeviajes3.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+f
+    <Page title="{i18n>title}">
+
+        <content>
+            <Panel headerText="Informacion general de la agencia de Viajes">
+
+                <Label id="labelviajes" text="{i18n>titulorelviajes}" class="sapUiSmallMargin" visible="true"/>
+
+                <IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+
+                    <items>
+
+                        <IconTabFilter text="Por Cotizar" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <SearchField search="onSearchCotizar" width="10%">
+
+                            </SearchField>
+
+                            <Label id="labelporcotizar" text="Solicitudes Por Cotizar" class="sapUiSmallMargin" visible="true"/>
+
+                            <Table id="tableporCotizar" items="{oJSONModelCotizar_Sol>/ListPorCotizar}" growing="true" mode="MultiSelect" selectionChange="onselectionChange" >
+
+                                <columns>
+
+                                    <Column width="6em">
+
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Numero de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="Tipo de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Periodo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="Apellido"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Nombre"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Sexo"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Servicio"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="Posicion"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Num.Celular"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Correo Electronico"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active" press="onItemPress">
+
+                                        <core:Icon src="{oJSONModelCotizar_Sol>Via_Action}" press="showApprovers"></core:Icon>
+
+                                        <core:Icon src="{oJSONModelCotizar_Sol>Via_View}" press="toCreateRelation"></core:Icon>
+
+                                        <Label text="{oJSONModelCotizar_Sol>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Tipo}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Periodo}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Apellido}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Nombre}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Sexo}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Servicios}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Posicion}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Celular}"/>
+                                        <Label text="{oJSONModelCotizar_Sol>Via_Correo}"/>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="Cotizadas" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <SearchField search="onSearchCotizadas" width="10%">
+
+                            </SearchField>
+
+                            <Label id="labelcotizadas" text="Solicitudes Cotizadas" class="sapUiSmallMargin" visible="true"/>
+
+                            <Table id="tableCotizadas" items="{oJSONModelCotizadas_Sol>/ListCotizadas}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                <columns>
+
+                                    <Column width="6em">
+
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Numero de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="Tipo de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Periodo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="Apellido"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Nombre"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Sexo"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Servicio"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="Posicion"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Num.Celular"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Correo Electronico"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active">
+                                        <core:Icon src="{oJSONModelCotizadas_Sol>Via_Action}" press="showApprovers"></core:Icon>
+
+                                        <core:Icon src="{oJSONModelCotizadas_Sol>Via_View}" press="toCreateRelation"></core:Icon>
+
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Tipo}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Periodo}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Apellido}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Nombre}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Sexo}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Servicios}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Posicion}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Celular}"/>
+                                        <Label text="{oJSONModelCotizadas_Sol>Via_Correo}"/>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </IconTabFilter>
+
+
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="Por Resevar" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <SearchField search="onSearchReservar" width="10%">
+
+                            </SearchField>
+
+                            <Label id="labelReservar" text="Solicitudes Por Reservar" class="sapUiSmallMargin" visible="true"/>
+
+                            <Table id="tableReservadas" items="{oJSONModelReservar_Sol>/ListPorReservar}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                <columns>
+
+                                    <Column width="6em">
+
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Numero de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="Tipo de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Periodo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="Apellido"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Nombre"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Sexo"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Servicio"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="Posicion"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Num.Celular"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Correo Electronico"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active">
+
+                                        <core:Icon src="{oJSONModelReservar_Sol>Via_Action}" press="showApprovers"></core:Icon>
+                                        <core:Icon src="{oJSONModelReservar_Sol>Via_View}" press="toCreateRelation"></core:Icon>
+
+                                        <Label text="{oJSONModelReservar_Sol>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Tipo}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Periodo}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Apellido}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Nombre}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Sexo}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Servicios}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Posicion}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Celular}"/>
+                                        <Label text="{oJSONModelReservar_Sol>Via_Correo}"/>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="No Aprobadas" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <SearchField search="onSearchNoAprobadas" width="10%">
+
+                            </SearchField>
+
+                            <Label id="labelR" text="Solicitudes No Aprobadas" class="sapUiSmallMargin" visible="true"/>
+
+                            <Table id="tableNoAprobadas" items="{oJSONModelRechazadas_Sol>/ListRechazadas}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                <columns>
+
+                                    <Column width="6em">
+
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Numero de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="Tipo de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Periodo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="Apellido"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Nombre"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Sexo"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Servicio"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="Posicion"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Num.Celular"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Correo Electronico"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active">
+                                        <core:Icon src="{oJSONModelRechazadas_Sol>Via_Action}" press="showApprovers"></core:Icon>
+                                        <core:Icon src="{oJSONModelRechazadas_Sol>Via_View}" press="toCreateRelation"></core:Icon>
+
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Tipo}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Periodo}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Apellido}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Nombre}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Sexo}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Servicios}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Posicion}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Celular}"/>
+                                        <Label text="{oJSONModelRechazadas_Sol>Via_Correo}"/>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon=""/>
+
+                        <IconTabFilter text="Aprobadas" icon="sap-icon://travel-request" iconColor="Neutral" key="travel_req">
+
+                            <SearchField search="onSearchAprobadas" width="10%">
+
+                            </SearchField>
+
+                            <Label id="labelAprobadas" text="Solicitudes Aprobadas" class="sapUiSmallMargin" visible="true"/>
+
+                            <Table id="tableAprobadas" items="{oJSONModelAprobadas_Sol>/ListAProbadas}" growing="true" mode="MultiSelect" selectionChange="onselectionChange">
+
+                                <columns>
+
+                                    <Column width="6em">
+
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text=" "/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Numero de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column >
+                                        <header>
+                                            <Label text="Tipo de Viaje"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Periodo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="8em">
+                                        <header>
+                                            <Label text="Apellido"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="7em">
+                                        <header>
+                                            <Label text="Nombre"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="6em">
+                                        <header>
+                                            <Label text="Sexo"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Servicio"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column width="3em">
+                                        <header>
+                                            <Label text="Posicion"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Num.Celular"/>
+                                        </header>
+                                    </Column>
+
+
+                                    <Column>
+                                        <header>
+                                            <Label text="Correo Electronico"/>
+                                        </header>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem type="Active">
+                                        <core:Icon src="{oJSONModelAprobadas_Sol>Via_Action}" press="showApprovers"></core:Icon>
+                                        <core:Icon src="{oJSONModelAprobadas_Sol>Via_View}" press="toCreateRelation"></core:Icon>
+
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_NroViaje}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Tipo}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Periodo}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Apellido}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Nombre}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Sexo}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Servicios}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Posicion}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Celular}"/>
+                                        <Label text="{oJSONModelAprobadas_Sol>Via_Correo}"/>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                        </IconTabFilter>
+
+                    </items>
+
+                </IconTabBar>
+            </Panel>
+
+            <Panel headerText="Servicios Solicitados" expandable="false" expanded="true" visible="true">
+
+                <HBox >
+
+                    <Panel headerText="Datos del Viajero" expandable="false" expanded="true" id="DatosViajeroID" width="10cm">
+
+                        <HBox>
+                            <Text text="Nombre:" class="sapUiTinyMarginEnd" width="4cm"/>
+                            <Text text="{oJSONModelCotizar_Sol>Via_Nombre}" class="sapUiTinyMarginEnd"/>
+                        </HBox>
+
+
+                        <HBox >
+                            <Text text="ID:" class="sapUiTinyMarginEnd" width="4cm"/>
+                            <Text text="{oJSONModelCotizar_Sol>Via_ID}" class="sapUiTinyMarginEnd"/>
+
+                        </HBox>
+
+
+                        <HBox >
+                            <Text text="Sexo:" class="sapUiTinyMarginEnd" width="4cm"/>
+                            <Text text="{oJSONModelCotizar_Sol>Via_Sexo}" class="sapUiTinyMarginEnd"/>
+
+                        </HBox>
+
+
+                        <HBox >
+                            <Text text="Edad:" class="sapUiTinyMarginEnd" width="4cm"/>
+                            <Text text="{oJSONModelCotizar_Sol>Via_Edad}" class="sapUiTinyMarginEnd"/>
+
+                        </HBox>
+
+
+                        <HBox >
+                            <Text text="Fecha de Nacimiento:" class="sapUiTinyMarginEnd" width="4cm"/>
+                            <Text text="{oJSONModelCotizar_Sol>Via_Nacimiento}" class="sapUiTinyMarginEnd"/>
+
+                        </HBox>
+
+
+                    </Panel>
+
+                    <Panel headerText="Servicios Solicitados" expandable="false" expanded="true" id="ServiciosID">
+
+                        <Table id="idServicesTable2" items="{ path: 'oJSONModelCotizar_Sol>/Servicios' }" mode="None" selectionChange="onselectionChange">
+
+                            <columns>
+
+                                <Column hAlign="Center" width="1cm">
+                                    <header>
+                                        <Label text="Servicio"/>
+                                    </header>
+                                </Column>
+
+                                <Column hAlign="Center" width="1cm">
+                                    <header>
+                                        <Label text="Ruta"/>
+                                    </header>
+                                </Column>
+
+                                <Column hAlign="Center" width="1cm">
+                                    <header>
+                                        <Label text="Fecha Inicial"/>
+                                    </header>
+                                </Column>
+
+                                <Column hAlign="Center" width="1cm">
+                                    <header>
+                                        <Label text="Hora Inicial"/>
+                                    </header>
+                                </Column>
+
+                                <Column hAlign="Center" width="1cm">
+                                    <header>
+                                        <Label text="Fecha Final"/>
+                                    </header>
+                                </Column>
+
+
+                            </columns>
+
+                            <items>
+
+                                <ColumnListItem type="Active">
+
+
+                                    <Label text="{oJSONModelCotizar_Sol>Servicio}"/>
+                                    <Label text="{oJSONModelCotizar_Sol>Ruta}"/>
+                                    <Label text="{oJSONModelCotizar_Sol>Fecha_Ini}"/>
+                                    <Label text="{oJSONModelCotizar_Sol>Hora_Ini}"/>
+                                    <Label text="{oJSONModelCotizar_Sol>Fecha_Fin}"/>
+
+
+                                </ColumnListItem>
+
+                            </items>
+
+                        </Table>
+
+                    </Panel>
+
+                </HBox>
+
+                <TextArea value="{oJSONModelCotizar_Sol>Cotizacion}" rows="8" width="30cm" id="CotizacionID"/>
+
+                <Button id="btnGuardarCoti" icon="sap-icon://add" text="Guardar Cotizacion" press="onAddCotizacion" class="sapUiSmallMarginEnd"/>
+                <Button id="btnLiberarCotizacion" icon="sap-icon://add" text="Liberar Cotizacion" press="onReleaseCoti" class="sapUiSmallMarginEnd"/>
+
+            </Panel>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

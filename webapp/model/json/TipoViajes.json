@@ -1,0 +1,22 @@
+{
+
+    "TripTypeKey": "",
+    "ListTripType": [
+        {
+            "TypeId": "01",
+            "Name": "Viaje Nacional"
+        },
+        {
+            "TypeId": "02",
+            "Name": "Viaje Internacional"
+        },
+        {
+            "TypeId": "03",
+            "Name": "Viaje Tercero Nac"
+        },
+        {
+            "TypeId": "04",
+            "Name": "Viaje Tercero Inti"
+        }
+    ]
+}

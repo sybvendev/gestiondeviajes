@@ -1,0 +1,39 @@
+{
+
+    "ListPorReservar": [
+
+        {
+            "Via_Action": "sap-icon://edit-outside",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1620",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/01/2023 - 28/01/2023",
+            "Via_Apellido": "De Sousa",
+            "Via_Nombre": "Luis",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "SUP SISO&MR - Supervisor de Automoviles",
+            "Via_Celular": "+584128088040",
+            "Via_Correo": "luisdesousa@digitel.com.ve"
+
+        },
+
+        {
+            "Via_Action": "sap-icon://edit-outside",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1621",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/11/2023 - 28/11/2023",
+            "Via_Apellido": "Romere",
+            "Via_Nombre": "Romero",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP INFRDATO - Esp Telecominicaciones",
+            "Via_Celular": "+584127088090",
+            "Via_Correo": "romoreromero@digitel.com.ve"
+
+        }
+
+    ]
+
+}

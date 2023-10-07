@@ -1,0 +1,106 @@
+{
+    "ListPorCotizar": [
+        {
+            "Via_Action": "sap-icon://edit-outside",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1606",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/06/2023 - 28/06/2023",
+            "Via_Apellido": "Fernandez",
+            "Via_Nombre": "Johan Suarez",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "SUP SISO&MR - Supervisor de sistemas",
+            "Via_Celular": "+584128083155",
+            "Via_Correo": "johanfernandez@digitel.com.ve",
+            "Via_ID": "16100213",
+            "Via_Edad": "30",
+            "Via_Nacimiento": "07/11/1994",
+            "Servicios": [
+                {
+                    "Servicio": "Hotel",
+                    "Ruta": "VE:Caracas",
+                    "Fecha_Ini": "07/04/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/12/2023"
+                },
+                {
+                    "Servicio": "Taxi",
+                    "Ruta": "VE:Caracas",
+                    "Fecha_Ini": "07/06/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/11/2023"
+                }
+            ],
+            "Cotizacion": "Prueba"
+        },
+        {
+            "Via_Action": "sap-icon://edit-outside",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1607",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/07/2023 - 28/07/2023",
+            "Via_Apellido": "Matute",
+            "Via_Nombre": "Darwuins Johan",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP INFRDATO - Esp Infraestructura de da",
+            "Via_Celular": "+584127083155",
+            "Via_Correo": "Darwuins@digitel.com.ve",
+            "Via_ID": "16200213",
+            "Via_Edad": "35",
+            "Via_Nacimiento": "05/12/1999",
+            "Servicios": [
+                {
+                    "Servicio": "Hotel",
+                    "Ruta": "VE:Maracay",
+                    "Fecha_Ini": "07/04/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/12/2023"
+                },
+                {
+                    "Servicio": "Taxi",
+                    "Ruta": "VE:Yaracuy",
+                    "Fecha_Ini": "07/06/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/11/2023"
+                }
+            ],
+            "Cotizacion": ""
+        },
+        {
+            "Via_Action": "sap-icon://edit-outside",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1608",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "24/10/2023 - 28/10/2023",
+            "Via_Apellido": "Bravo",
+            "Via_Nombre": "Jeyner del Carmen",
+            "Via_Sexo": "Femenino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP PLA SIS - Esp en plataforma de Sist",
+            "Via_Celular": "+584127084077",
+            "Via_Correo": "Jeyner_Bravo@digitel.com.ve",
+            "Via_ID": "17210213",
+            "Via_Edad": "36",
+            "Via_Nacimiento": "07/12/1986",
+            "Servicios": [
+                {
+                    "Servicio": "Hotel",
+                    "Ruta": "VE:Barquisimeto",
+                    "Fecha_Ini": "07/02/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/12/2023"
+                },
+                {
+                    "Servicio": "Taxi",
+                    "Ruta": "VE:Merida",
+                    "Fecha_Ini": "07/01/2023",
+                    "Hora_Ini": "00:00",
+                    "Fecha_Fin": "07/10/2023"
+                }
+            ],
+            "Cotizacion": ""
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+{
+
+    "ListCotizadas": [
+
+        {
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1609",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/07/2023 - 28/07/2023",
+            "Via_Apellido": "Juarez",
+            "Via_Nombre": "Miguel",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "SUP SISO&MR - Supervisor de planta",
+            "Via_Celular": "+584128083155",
+            "Via_Correo": "MiguelJuarez@digitel.com.ve"
+
+        },
+
+        {
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1610",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "28/08/2023 - 28/08/2023",
+            "Via_Apellido": "Rivas",
+            "Via_Nombre": "Juan",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP PLANT - Gerente de planta",
+            "Via_Celular": "+584127084012",
+            "Via_Correo": "RivasJuan@digitel.com.ve"
+
+        },
+
+        {
+            "Via_Action": "sap-icon://newspaper",
+            "Via_View": "sap-icon://detail-view",
+            "Via_NroViaje": "1611",
+            "Via_Tipo": "Viaje Nacional",
+            "Via_Periodo": "20/10/2023 - 20/10/2023",
+            "Via_Apellido": "Vivas",
+            "Via_Nombre": "Victor",
+            "Via_Sexo": "Masculino",
+            "Via_Servicios": "Hotel",
+            "Via_Posicion": "ESP PLA TAN - Personal medico",
+            "Via_Celular": "+584127088089",
+            "Via_Correo": "victor_vivas@digitel.com.ve"
+
+        }
+
+    ]
+
+}
